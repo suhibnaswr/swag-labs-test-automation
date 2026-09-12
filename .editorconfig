@@ -1,0 +1,30 @@
+# هذا الملف يوحّد تنسيق الكود بين جميع المحررات
+root = true
+
+# إعدادات عامة لجميع الملفات
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+# إعدادات ملفات Java
+[*.java]
+indent_style = space
+indent_size = 4
+
+# إعدادات ملفات XML
+[*.xml]
+indent_style = space
+indent_size = 4
+
+# إعدادات ملفات Markdown
+[*.md]
+indent_style = space
+indent_size = 2
+trim_trailing_whitespace = false
+
+# إعدادات ملفات Properties
+[*.properties]
+indent_style = space
+indent_size = 4
