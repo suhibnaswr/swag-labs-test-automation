@@ -81,4 +81,51 @@ pipeline {
             }
         }
     }
+
+        /*
+         * تعمل هذه الإجراءات دائمًا بعد انتهاء الـPipeline،
+         * سواء نجحت الاختبارات أم فشلت.
+         */
+        post {
+
+            always {
+
+                /*
+                 * نشر نتائج اختبارات Maven بصيغة JUnit.
+                 *
+                 * allowEmptyResults يمنع فشل الـPipeline
+                 * إذا لم تُنشأ النتائج بسبب خطأ مبكر.
+                 */
+                junit(
+                        testResults: 'target/surefire-reports/TEST-*.xml',
+                        allowEmptyResults: true
+                )
+
+                /*
+                 * إنشاء تقرير Allure من النتائج
+                 * الموجودة داخل target/allure-results.
+                 *
+                 * يتطلب تثبيت Allure Jenkins Plugin.
+                 */
+                allure(
+                        includeProperties: false,
+                        results: [
+                                [
+                                        path: 'target/allure-results'
+                                ]
+                        ]
+                )
+
+                /*
+                 * حفظ Screenshots كـBuild Artifacts.
+                 *
+                 * allowEmptyArchive يسمح بنجاح الخطوة
+                 * عندما تنجح الاختبارات ولا توجد Screenshots.
+                 */
+                archiveArtifacts(
+                        artifacts: 'target/screenshots/**/*.png',
+                        allowEmptyArchive: true
+                )
+            }
+        }
 }
