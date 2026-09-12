@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+
+    <Properties>
+        <Property name="pattern">%d{HH:mm:ss.SSS} %-5level [%t] %-22logger{1} %msg%n</Property>
+    </Properties>
+
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="${pattern}"/>
+        </Console>
+
+        <RollingFile name="File"
+                     fileName="target/logs/test.log"
+                     filePattern="target/logs/test-%d{yyyy-MM-dd}-%i.log">
+            <PatternLayout pattern="${pattern}"/>
+            <Policies>
+                <SizeBasedTriggeringPolicy size="5 MB"/>
+            </Policies>
+            <DefaultRolloverStrategy max="5"/>
+        </RollingFile>
+    </Appenders>
+
+    <Loggers>
+        <Logger name="core" level="info"/>
+        <Logger name="listeners" level="info"/>
+        <Logger name="tests" level="info"/>
+
+        <Logger name="org.openqa.selenium" level="warn"/>
+
+        <Root level="info">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="File"/>
+        </Root>
+    </Loggers>
+
+</Configuration>

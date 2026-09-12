@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+
+<!--
+    هذا الملف يشغّل فقط الاختبارات التابعة
+    إلى مجموعة Smoke.
+-->
+<suite name="Swag Labs Smoke Suite">
+
+    <!-- تسجيل Listener الخاص بالنتائج والصور وAllure -->
+    <listeners>
+        <listener class-name="listeners.TestListener"/>
+    </listeners>
+
+    <!-- مجموعة اختبارات Smoke -->
+    <test name="Smoke Tests">
+
+        <!-- اختيار الاختبارات التي تحمل groups = "smoke" فقط -->
+        <groups>
+            <run>
+                <include name="smoke"/>
+            </run>
+        </groups>
+
+        <!-- الكلاسات التي سيبحث TestNG داخلها -->
+        <classes>
+            <class name="tests.LoginTest"/>
+            <class name="tests.ProductsTest"/>
+            <class name="tests.CartTest"/>
+            <class name="tests.CheckoutTest"/>
+        </classes>
+
+    </test>
+
+</suite>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+
+<!--
+    هذا الملف يشغّل جميع Test Classes في المشروع.
+-->
+<suite name="Swag Labs Complete Suite">
+
+    <!-- تسجيل Listener المسؤول عن النتائج والصور وAllure -->
+    <listeners>
+        <listener class-name="listeners.TestListener"/>
+    </listeners>
+
+    <!-- مجموعة الاختبارات الكاملة -->
+    <test name="Complete Test Suite">
+
+        <classes>
+
+            <!-- اختبارات تسجيل الدخول -->
+            <class name="tests.LoginTest"/>
+
+            <!-- اختبارات صفحة المنتجات -->
+            <class name="tests.ProductsTest"/>
+
+            <!-- اختبارات سلة المشتريات -->
+            <class name="tests.CartTest"/>
+
+            <!-- اختبارات عملية Checkout -->
+            <class name="tests.CheckoutTest"/>
+
+        </classes>
+
+    </test>
+
+</suite>

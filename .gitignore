@@ -1,0 +1,49 @@
+# ملفات Maven الناتجة عن البناء والاختبارات
+target/
+
+# نتائج وتقارير Allure في حال إنشائها خارج target
+allure-results/
+allure-report/
+# ملفات Allure المحلية التي ينشئها Maven
+.allure/
+
+# تقارير TestNG الناتجة تلقائيًا
+test-output/
+
+# Screenshots وLogs الناتجة عن الاختبارات
+screenshots/
+logs/
+
+# إعدادات IntelliJ IDEA الخاصة بالجهاز
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# ملفات VS Code
+.vscode/
+
+# ملفات Eclipse
+.classpath
+.project
+.settings/
+
+# ملفات Java المترجمة
+*.class
+
+# ملفات Logs
+*.log
+
+# ملفات نظام Windows
+Thumbs.db
+Desktop.ini
+
+# ملفات نظام macOS
+.DS_Store
+
+# ملفات مؤقتة ونسخ احتياطية
+*.tmp
+*.temp
+*.bak
+*.swp
+*~git --version
