@@ -139,6 +139,52 @@ The automated scenarios cover:
 The framework currently produces 29 successful test executions,
 including DataProvider executions.
 
+## Prerequisites
+
+Before running the project, make sure the following tools are installed:
+
+- Java 17.
+- Maven.
+- Git.
+- Google Chrome or Microsoft Edge.
+- Allure Commandline for opening reports locally.
+- Jenkins for running the CI pipeline.
+
+Verify Java and Maven from the terminal:
+
+```bash
+java -version
+mvn -version
+```
+
+## Setup
+
+Clone the repository from GitHub:
+
+```bash
+git clone https://github.com/suhibnaswr/swag-labs-test-automation.git
+```
+
+Open the project directory:
+
+```bash
+cd swag-labs-test-automation
+```
+
+Download the project dependencies and compile the source code:
+
+```bash
+mvn clean compile
+```
+
+The default configuration is located inside:
+
+```text
+src/test/resources/config.properties
+```
+
+Update the browser or headless values in this file when required.
+
 ## TestNG Suites
 
 ### Complete Suite
@@ -211,6 +257,15 @@ Screenshots for failed tests are saved inside:
 target/screenshots
 ```
 
+The Allure report contains:
+
+- Test execution status.
+- Test steps and descriptions.
+- Failure screenshots.
+- Current page URL attachments.
+- Retry information.
+- Failure details and stack traces.
+
 ## Supported Browsers
 
 The browser is selected through `config.properties`.
@@ -237,6 +292,47 @@ or through Maven:
 mvn test -Dheadless=true
 ```
 
+## Jenkins Pipeline
+
+The project includes a `Jenkinsfile` for continuous integration.
+
+The Jenkins pipeline contains the following stages:
+
+- Checkout: downloads the source code from GitHub.
+- Build: compiles the Maven project.
+- Test: runs the selected TestNG suite.
+- Post Actions: publishes JUnit results, Allure results and screenshots.
+
+The pipeline supports the following parameters:
+
+- `SUITE`: selects the complete, smoke or parallel TestNG suite.
+- `HEADLESS`: controls whether the browser runs without displaying its window.
+
+Available suite values:
+
+```text
+testng.xml
+testng-smoke.xml
+testng-parallel.xml
+```
+
+To run the Jenkins pipeline:
+
+1. Open the `swag-labs-test-automation` job in Jenkins.
+2. Select **Build with Parameters**.
+3. Select the required TestNG suite.
+4. Enable or disable the `HEADLESS` parameter.
+5. Select **Build**.
+6. Wait for the build to finish.
+7. Open **Allure Report** to review the test results.
+
+A successful Jenkins build publishes:
+
+- JUnit test results.
+- Allure test results.
+- Failure screenshots.
+- A downloadable Allure report archive.
+
 ## Git Workflow
 
 The project uses feature branches.
@@ -253,6 +349,21 @@ git commit -m "docs: add project documentation"
 git switch main
 git merge --no-ff feature/project-documentation
 ```
+
+## Future Automation
+
+Future improvements may include:
+
+- Cross-browser testing with Chrome, Edge and Firefox.
+- Automated accessibility testing.
+- Visual regression testing.
+- Performance and load testing.
+- API testing for application services.
+- Running the Jenkins pipeline automatically after every GitHub push.
+- Executing tests inside Docker containers.
+- Running tests on multiple operating systems.
+- Publishing build notifications through email or Slack.
+- Adding test history and trend reports.
 
 ## Author
 
