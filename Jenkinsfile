@@ -8,6 +8,14 @@ pipeline {
     agent any
 
     /*
+     * نطلب من Jenkins استخدام نسخة Maven
+     * المسجلة داخل Global Tool Configuration.
+     */
+    tools {
+        maven 'Maven'
+    }
+
+    /*
      * خيارات تظهر عند تشغيل:
      * Build with Parameters
      */
