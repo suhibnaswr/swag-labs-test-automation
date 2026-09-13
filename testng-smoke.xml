@@ -10,6 +10,7 @@
 
     <!-- تسجيل Listener الخاص بالنتائج والصور وAllure -->
     <listeners>
+        <listener class-name="listeners.RetryTransformer"/>
         <listener class-name="listeners.TestListener"/>
     </listeners>
 
